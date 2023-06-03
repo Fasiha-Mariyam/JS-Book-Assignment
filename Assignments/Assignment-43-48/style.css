@@ -1,0 +1,23 @@
+.allimg{
+   display: flex;
+}
+#img2{
+margin: 0;
+padding: 0;    
+}
+.heaading{
+    display: inline;
+ }
+ #student{
+    /* padding-top: 5%; */
+    margin: 10%;
+    padding: 05%;
+    margin-left: 30%;
+    font-size: larger;
+ }
+ .flex{
+   padding: 15%;
+   display: flex;
+   justify-content: center;
+   gap: 2%;
+ }

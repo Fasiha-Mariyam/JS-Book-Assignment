@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #signupForm{
+            display: flex;
+            justify-content: center;
+        }
+        .form{
+            padding: 2%;
+            border:2px solid black;
+            display:flex;
+            justify-content: center;
+            margin-left:30% ;
+            margin-right:30% ;
+        }
+        #textwritten{
+            display: flex;
+            justify-content: center;
+        }
+        #content{
+            display: flex;
+            justify-content: center;
+            background-color:rgb(189, 245, 245);
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 10%;
+        }
+        .studentform{
+                    color: rgb(10, 56, 56);
+                    display: flex;
+                    justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- question 1 -->
+    <!-- <div id="signupForm"><h1>Signup Form</h1></div>
+    <div class="form">
+        <form onsubmit="myData(event)">
+            <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required onblur="this.style.backgroundColor='red';" onFocus="this.style.backgroundColor='yellow';">
+     <br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required onblur="this.style.backgroundColor='red';" onfocus="this.style.backgroundColor='yellow';">
+<br><br>
+    <label for="password">Password:</label>
+    <input onkeydown="this.style.backgroundColor='yellow'" onkeyup="this.style.backgroundColor='green'" type="password" id="password" name="password" required>
+<br><br>
+<label >Gender</label>
+<input type="checkbox" id="Male" >Male <input type="checkbox" id="Female">Female
+<br><br>
+<label >Data Of Birth:</label>
+<input type="date" id="Date">
+<br><br>
+    <button type="submit">Submit</button>
+        </form>
+    </div>
+    <br><br>
+    <div id="textwritten">   
+   <label >Your Entered Data:</label>
+  <textarea cols="30" rows="10" id="Display"></textarea>
+</div>  -->
+                         <!-- question 2 -->
+<!-- <div id="content"><p id="moreContent">Content is the information contained within communication media.
+     This includes internet, cinema, television, radio, audio CDs, 
+     <br><button  onclick="more()">ReadMore</button></p></div> -->
+                     
+                           <!-- question 3 -->
+    <!-- <div class="studentform"><h1>Student Form</h1></div>
+    <div class="formtable">
+        <form >
+
+        </form>
+    </div> -->
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+        }
+        form {
+          display: none;
+        }
+      </style>
+      <script>
+        var studentData = []; // Array to store student details
+    
+        function addStudent() {
+          var name = document.getElementById("name").value;
+          var age = document.getElementById("age").value;
+          var grade = document.getElementById("grade").value;
+    
+          var student = { name: name, age: age, grade: grade };
+          studentData.push(student);
+    
+          displayStudentData();
+          resetForm();
+        }
+    
+        function displayStudentData() {
+          var table = document.getElementById("studentTable");
+    
+          // Clear existing table rows
+          while (table.rows.length > 1) {
+            table.deleteRow(1);
+          }
+    
+          // Add rows for each student
+          for (var i = 0; i < studentData.length; i++) {
+            var student = studentData[i];
+    
+            var row = table.insertRow();
+            var nameCell = row.insertCell();
+            var ageCell = row.insertCell();
+            var gradeCell = row.insertCell();
+            var deleteCell = row.insertCell();
+            var editCell = row.insertCell();
+    
+            nameCell.innerHTML = student.name;
+            ageCell.innerHTML = student.age;
+            gradeCell.innerHTML = student.grade;
+    
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete";
+            deleteButton.onclick = function() {
+              var currentRow = this.parentNode.parentNode;
+              currentRow.parentNode.removeChild(currentRow);
+            };
+            deleteCell.appendChild(deleteButton);
+    
+            var editButton = document.createElement("button");
+            editButton.innerHTML = "Edit";
+            editButton.onclick = function() {
+              var currentRow = this.parentNode.parentNode;
+              var index = currentRow.rowIndex - 1;
+              populateEditForm(index);
+            };
+            editCell.appendChild(editButton);
+          }
+        }
+    
+        function resetForm() {
+          document.getElementById("studentForm").reset();
+        }
+    
+        function showForm() {
+          document.getElementById("editForm").style.display = "block";
+        }
+    
+        function hideForm() {
+          document.getElementById("editForm").style.display = "none";
+        }
+    
+        function populateEditForm(index) {
+          var student = studentData[index];
+    
+          document.getElementById("editName").value = student.name;
+          document.getElementById("editAge").value = student.age;
+          document.getElementById("editGrade").value = student.grade;
+          document.getElementById("editIndex").value = index;
+    
+          showForm();
+        }
+    
+        function saveEditedStudent() {
+          var index = document.getElementById("editIndex").value;
+    
+          var student = {
+            name: document.getElementById("editName").value,
+            age: document.getElementById("editAge").value,
+            grade: document.getElementById("editGrade").value
+          };
+    
+          studentData[index] = student;
+          displayStudentData();
+          hideForm();
+        }
+      </script>
+    </head>
+    <body>
+      <h2>Add Student</h2>
+      <form id="studentForm" onsubmit="event.preventDefault(); addStudent();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+    
+        <label for="age">Age
+
+
+
+    <script src="./app.js">
+    </script>
+</body>
+</html>
