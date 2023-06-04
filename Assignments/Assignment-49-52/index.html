@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      body{
+        background-color: rgb(174, 226, 228);
+      }
         #signupForm{
             display: flex;
             justify-content: center;
@@ -31,10 +34,21 @@
             margin-top: 10%;
         }
         .studentform{
-                    color: rgb(10, 56, 56);
+                    color: rgb(15, 90, 90);
                     display: flex;
                     justify-content: center;
         }
+        .formdetails{
+          display: flex;
+        justify-content:space-evenly;
+        }
+      #studentTable{
+       margin-left: 36%;
+      }
+      .hidden{
+        display: none;
+      }
+
     </style>
 </head>
 <body>
@@ -71,131 +85,39 @@
      <br><button  onclick="more()">ReadMore</button></p></div> -->
                      
                            <!-- question 3 -->
-    <!-- <div class="studentform"><h1>Student Form</h1></div>
-    <div class="formtable">
-        <form >
+    <div class="studentform"><h1>Student Form</h1></div>
 
+    <div class="formdetails">
+        <form onsubmit="addStudent(event)">
+          <label for="name">Name:</label>
+              <input type="text" name="name" id="name" required>
+              <label for="age">Age:</label>
+              <input type="number" name="age" id="age" required>
+              <button type="submit">Submit</button>
         </form>
-    </div> -->
-    <style>
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
-        th, td {
-          border: 1px solid black;
-          padding: 8px;
-        }
-        form {
-          display: none;
-        }
-      </style>
-      <script>
-        var studentData = []; // Array to store student details
+    </div>
+
+    <br>
+
+    <table border="1" cellspacing="5" cellpadding="20" id="studentTable">
+      <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Actions</th>
+      </tr>
+  </table>
+<form id="editForm" class="hidden" onsubmit="saveEdit(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="editname" name="name">
+      <label for="age">Age:</label>
+      <input type="number" id="editage" name="age">
+      <button type="submit">Save</button>
+      <button type="button" onclick="cancelEdit()">Cancel</button>
+    </form>
     
-        function addStudent() {
-          var name = document.getElementById("name").value;
-          var age = document.getElementById("age").value;
-          var grade = document.getElementById("grade").value;
-    
-          var student = { name: name, age: age, grade: grade };
-          studentData.push(student);
-    
-          displayStudentData();
-          resetForm();
-        }
-    
-        function displayStudentData() {
-          var table = document.getElementById("studentTable");
-    
-          // Clear existing table rows
-          while (table.rows.length > 1) {
-            table.deleteRow(1);
-          }
-    
-          // Add rows for each student
-          for (var i = 0; i < studentData.length; i++) {
-            var student = studentData[i];
-    
-            var row = table.insertRow();
-            var nameCell = row.insertCell();
-            var ageCell = row.insertCell();
-            var gradeCell = row.insertCell();
-            var deleteCell = row.insertCell();
-            var editCell = row.insertCell();
-    
-            nameCell.innerHTML = student.name;
-            ageCell.innerHTML = student.age;
-            gradeCell.innerHTML = student.grade;
-    
-            var deleteButton = document.createElement("button");
-            deleteButton.innerHTML = "Delete";
-            deleteButton.onclick = function() {
-              var currentRow = this.parentNode.parentNode;
-              currentRow.parentNode.removeChild(currentRow);
-            };
-            deleteCell.appendChild(deleteButton);
-    
-            var editButton = document.createElement("button");
-            editButton.innerHTML = "Edit";
-            editButton.onclick = function() {
-              var currentRow = this.parentNode.parentNode;
-              var index = currentRow.rowIndex - 1;
-              populateEditForm(index);
-            };
-            editCell.appendChild(editButton);
-          }
-        }
-    
-        function resetForm() {
-          document.getElementById("studentForm").reset();
-        }
-    
-        function showForm() {
-          document.getElementById("editForm").style.display = "block";
-        }
-    
-        function hideForm() {
-          document.getElementById("editForm").style.display = "none";
-        }
-    
-        function populateEditForm(index) {
-          var student = studentData[index];
-    
-          document.getElementById("editName").value = student.name;
-          document.getElementById("editAge").value = student.age;
-          document.getElementById("editGrade").value = student.grade;
-          document.getElementById("editIndex").value = index;
-    
-          showForm();
-        }
-    
-        function saveEditedStudent() {
-          var index = document.getElementById("editIndex").value;
-    
-          var student = {
-            name: document.getElementById("editName").value,
-            age: document.getElementById("editAge").value,
-            grade: document.getElementById("editGrade").value
-          };
-    
-          studentData[index] = student;
-          displayStudentData();
-          hideForm();
-        }
-      </script>
-    </head>
-    <body>
-      <h2>Add Student</h2>
-      <form id="studentForm" onsubmit="event.preventDefault(); addStudent();">
-        <label for="name">Name:</label>
-        <input type="text" id="name" required>
-    
-        <label for="age">Age
 
 
 
-    <script src="./app.js">
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>
